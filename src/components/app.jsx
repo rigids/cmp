@@ -2,7 +2,7 @@ import { h, Component } from 'preact';
 import style from './app.less';
 import { currentLocale } from '../lib/localize';
 
-import PopupFooter from './popup/popupFooter';
+import PopupFooterCustom from './popup/popupFooterCustom';
 import Popup from './popup/popup';
 import Footer from './footer/footer';
 
@@ -42,7 +42,7 @@ export default class App extends Component {
 					localization={userLocalization}
 					onSave={this.onSave}
 				/>
-				<PopupFooter
+				<PopupFooterCustom
 					store={store}
 					localization={userLocalization}
 					onSave={this.onSave}
