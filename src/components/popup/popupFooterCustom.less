@@ -3,6 +3,24 @@
 .popup {
 	display: none;
 	position: fixed;
+	top: auto;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 99999;
+	justify-content: center;
+	align-items: center;
+  a{
+    color: #3b9bcb;
+    display:inline;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
+.popupClicked {
+	display: none;
+	position: fixed;
 	top: 0;
 	bottom: 0;
 	left: 0;
@@ -10,6 +28,7 @@
 	z-index: 99999;
 	justify-content: center;
 	align-items: center;
+  
 }
 .overlay {
 	position: fixed;
@@ -21,13 +40,12 @@
 }
 
 .content {
-    left: 0;
-    right: 0;
-    bottom: 0;
-	background: white;
+  left: 0;
+  right: 0;
+  bottom: 0;
 	position: fixed;
-	background-color: white;
-	box-shadow: 0px 0px 0px 3px @color-primary;
+	background-color: #000;
+  color: #fff;
 
 	@media @smartphone {
 		width: 98%;

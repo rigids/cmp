@@ -23,12 +23,12 @@ export default class PopupFooterCustom extends Component {
   
   handleScroll = (event) => {
     const { store } = this.props;
-    let scrollTop = event.srcElement.body.scrollTop,
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
       itemTranslate = Math.min(0, scrollTop/3 - 60);
     
     store.persist();
     store.toggleConsentToolShowing(false);
-    console.log('handleScroll invoked');
+
     // hide the consent form and remove Event
     window.removeEventListener('scroll', this.handleScroll);
   };
@@ -64,11 +64,11 @@ export default class PopupFooterCustom extends Component {
 
 		return (
 			<div
-				class={style.popup}
+        class={this.state.isActive ? style.popupClicked : style.popup }
 				style={{ display: isFooterConsentToolShowing ? 'flex' : 'none' }}
 			>
 				<div
-					class="footer__wrapperr"
+					class="footer__wrapper"
 					onClick={this.handleClose}
 				/>
 				<div class={this.state.isActive ? style.contentClicked : style.content}>
@@ -80,7 +80,13 @@ export default class PopupFooterCustom extends Component {
 							localization={localization}
 							store={store}
 						/>
-						/*details not needed*/
+            <Details
+							onSave={this.props.onSave}
+							onCancel={this.onCancel}
+							store={this.props.store}
+							onClose={this.handleClose}
+							localization={localization}
+						/>
 					</Panel>
 				</div>
 			</div>
